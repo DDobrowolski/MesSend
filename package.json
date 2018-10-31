@@ -1,0 +1,26 @@
+{
+  "name": "messend",
+  "version": "1.0.0",
+  "description": "Simple chatting app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DDobrowolski/MesSend.git"
+  },
+  "author": "DDobrowolski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DDobrowolski/MesSend/issues"
+  },
+  "homepage": "https://github.com/DDobrowolski/MesSend#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.5"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.3.8"
+  }
+}
