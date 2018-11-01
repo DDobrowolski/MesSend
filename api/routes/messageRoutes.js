@@ -2,7 +2,6 @@
 module.exports = function (app) {
   var mesSend = require('../controllers/messageController');
 
-
   app.route('/messages')
     .get(mesSend.get_all_messages)
     .post(mesSend.create_message);

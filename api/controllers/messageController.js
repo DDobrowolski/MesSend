@@ -26,7 +26,7 @@ exports.create_message = function (req, res) {
 
 
 exports.get_one_message = function (req, res) {
-  Message.findById(req.params.taskId, function (err, message) {
+  Message.findById(req.params.messageId, function (err, message) {
     if (err)
       res.send(err);
     res.json(message);
