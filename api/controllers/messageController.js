@@ -6,7 +6,8 @@ var mongoose = require('mongoose'),
   User = mongoose.model('Users');
 
 exports.get_all_messages = function (req, res) {
-  Message.find({}, function (err, message) {
+  Message.find({}).populate('author')
+  .exec(function (err, message) {
     if (err)
       res.send(err);
     res.json(message);
@@ -16,19 +17,11 @@ exports.get_all_messages = function (req, res) {
 
 exports.create_message = function (req, res) {
   var new_message = new Message(req.body);
-  var user = new User(User.findById(req.params.author))
-  console.log(user);
-  new_message.author = user;
-  new_message.save(function (err, message) { 
-    if (err)
-      res.send(err);
-    Message.find({})
-    .populate('user')
-    .exec((err, messages) => {
-      res.json(messages)
-    })
-  });
-};
+  new_message.save((err, message)=> {
+    if(err) res.send(err);
+    res.json(message);
+  })
+  };
 
 
 exports.get_one_message = function (req, res) {
@@ -36,7 +29,7 @@ exports.get_one_message = function (req, res) {
     if (err)
       res.send(err);
     res.json(message);
-  });
+  }).populate('author').exec();
 };
 
 
