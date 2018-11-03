@@ -12,9 +12,6 @@ exports.get_all_users = function (req, res) {
   });
 };
 
-
-
-
 exports.create_user = function (req, res) {
   var new_user = new User(req.body);
   new_user.save(function (err, user) {
@@ -24,7 +21,6 @@ exports.create_user = function (req, res) {
   });
 };
 
-
 exports.get_one_user = function (req, res) {
   User.findById(req.params.userId, function (err, user) {
     if (err)
@@ -32,7 +28,6 @@ exports.get_one_user = function (req, res) {
     res.json(user);
   });
 };
-
 
 exports.update_user = function (req, res) {
   User.findOneAndUpdate({
@@ -45,7 +40,6 @@ exports.update_user = function (req, res) {
     res.json(user);
   });
 };
-
 
 exports.delete_user = function (req, res) {
   User.remove({

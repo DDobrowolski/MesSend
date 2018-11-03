@@ -7,21 +7,21 @@ var mongoose = require('mongoose'),
 
 exports.get_all_messages = function (req, res) {
   Message.find({}).populate('author')
-  .exec(function (err, message) {
-    if (err)
-      res.send(err);
-    res.json(message);
-  });
+    .exec(function (err, message) {
+      if (err)
+        res.send(err);
+      res.json(message);
+    });
 };
 
 
 exports.create_message = function (req, res) {
   var new_message = new Message(req.body);
-  new_message.save((err, message)=> {
-    if(err) res.send(err);
+  new_message.save((err, message) => {
+    if (err) res.send(err);
     res.json(message);
   })
-  };
+};
 
 
 exports.get_one_message = function (req, res) {
