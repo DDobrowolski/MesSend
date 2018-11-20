@@ -1,5 +1,5 @@
 {
-  "name": "messendServer",
+  "name": "messend_server",
   "version": "1.0.0",
   "description": "Backend for Messend",
   "main": "index.js",
