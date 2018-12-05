@@ -1,10 +1,11 @@
-var express = require('express'),
+const express = require('express'),
     app = express(),
     port = process.env.PORT || 8080,
     mongoose = require('mongoose'),
     Message = require('./api/models/messageModel'),
     User = require('./api/models/userModel') //created model loading here
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    cors = require('cors');
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
@@ -15,7 +16,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
-
+app.use(cors());
 
 var routes = require('./api/routes/messageRoutes'); //importing route
 routes(app); //register the route
