@@ -57,3 +57,12 @@ exports.delete_message = function (req, res) {
     });
   });
 };
+
+
+exports.get_author_messages = function (req, res) {
+  Message.find({ author: {_id: req.params.authorId}}, function (err, message) {
+    if (err)
+      res.send(err);
+    res.json(message);
+  }).populate('author').exec();
+};

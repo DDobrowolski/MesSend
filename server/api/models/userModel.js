@@ -6,6 +6,10 @@ var UserSchema = new Schema({
   username: {
     type: String,
     required: 'Username required'
+  },
+  messages: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Messages',
   }
 });
 

@@ -52,3 +52,11 @@ exports.delete_user = function (req, res) {
     });
   });
 };
+
+exports.get_user_messages = function (req, res) {
+  User.findById(req.params.userId, function (err, user) {
+    if (err)
+      res.send(err);
+    res.json(user);
+  }).populate('messages').exec();;
+};
