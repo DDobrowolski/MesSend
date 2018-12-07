@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import NavBar from '../NavBar/Navbar';
 import './Board.scss';
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 const content = (messages) => {
   console.log(messages)
@@ -14,11 +15,12 @@ const content = (messages) => {
 
 const items = (messages) => {
   return messages.map(m => {
+    const userId = m.author._id;
     return (
     <div className="post">
     <div className="row">
     <div className="col">
-    {m.content} - {m.author.username}
+    {m.content} - <Link to={`profile/${userId}`}>{m.author.username}</Link>
     </div>
     </div>
     </div>

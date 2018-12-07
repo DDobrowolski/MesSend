@@ -14,7 +14,6 @@ class Profile extends Component {
   componentDidMount() {
   getUserData(this.props.match.params.id).then(data => {
     this.setState({userdata: {username: data}});
-    console.log(data)
   })
    
   }
