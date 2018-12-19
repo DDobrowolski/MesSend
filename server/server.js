@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static('static'))
 
 var routes = require('./api/routes/messageRoutes'); //importing route
 routes(app); //register the route

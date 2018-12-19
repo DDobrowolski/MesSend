@@ -10,6 +10,9 @@ var UserSchema = new Schema({
   messages: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Messages',
+  },
+  image: {
+    type: String 
   }
 });
 

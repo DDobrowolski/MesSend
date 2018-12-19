@@ -16,12 +16,14 @@ const content = (messages) => {
 const items = (messages) => {
   return messages.map(m => {
     const userId = m.author._id;
+    const imageSrc = `http://localhost:8080/${m.author.image}`;
+    const username = m.author.username;
     return (
     <div className="post">
     <div className="row">
     <div className="col">
     <div className ="profileImg">
-    <img src="https://www.wykop.pl/cdn/c3201142/comment_kN54wH0AD2fOu8FoD5v4LIV0f1QEA17W.jpg"></img>
+    <Link to={`profile/${userId}`}><img src={imageSrc} alt={username}></img></Link>
     </div>
     <div className="postContent">
     {m.content} - <Link to={`profile/${userId}`}>{m.author.username}</Link>
