@@ -5,7 +5,11 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
   username: {
     type: String,
-    required: 'Username required'
+    required: 'Username is required'
+  },
+  password: {
+    type: String,
+    required: 'Password is required'
   },
   messages: {
     type: mongoose.Schema.Types.ObjectId,
