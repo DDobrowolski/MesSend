@@ -4,12 +4,14 @@ const express = require('express'),
     mongoose = require('mongoose'),
     Message = require('./api/models/messageModel'),
     User = require('./api/models/userModel') //created model loading here
-    bodyParser = require('body-parser'),
+bodyParser = require('body-parser'),
     cors = require('cors');
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/MesSend');
+mongoose.connect('mongodb://localhost/MesSend', {
+    useNewUrlParser: true
+});
 
 
 app.use(bodyParser.urlencoded({
