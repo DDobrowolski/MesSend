@@ -4,6 +4,7 @@ import NavBar from '../NavBar/Navbar';
 import './Board.scss';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
+import textEditor from './TextEditor/textEditor';
 
 const content = (messages) => {
   console.log(messages)
@@ -34,7 +35,7 @@ const items = (messages) => {
   )})
 }
 
-
+const mainContent = (messages) => (<div className="mainContainer">{[textEditor(), content(messages)]}</div>)
 
 class Board extends Component {
   state = {messages: []}
@@ -46,7 +47,7 @@ class Board extends Component {
     console.log(this.state)
   }
     render() {
-      return ([new NavBar(), content(this.state.messages)]);
+      return ([new NavBar(),mainContent(this.state.messages)]);
     }
   }
   export default Board;
