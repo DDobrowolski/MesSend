@@ -7,11 +7,16 @@ import {Link} from 'react-router-dom'
 import textEditor from './TextEditor/textEditor';
 
 const content = (messages) => {
-  console.log(messages)
   return (
 <div className="container">
       {items(messages)}
   </div>)
+}
+
+const replies = (message) => {
+  message.replies.map(reply => {
+    return (<div>{reply.content}</div>)
+  })
 }
 
 const items = (messages) => {
