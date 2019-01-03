@@ -3,7 +3,8 @@ const express = require('express'),
     port = process.env.PORT || 8080,
     mongoose = require('mongoose'),
     Message = require('./api/models/messageModel'),
-    User = require('./api/models/userModel') //created model loading here
+    User = require('./api/models/userModel')
+    Reply = require('./api/models/replyModel') //created model loading here
 bodyParser = require('body-parser'),
     cors = require('cors');
 

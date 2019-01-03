@@ -12,6 +12,9 @@ module.exports = function (app) {
     .put(mesSend.update_message)
     .delete(mesSend.delete_message);
 
+  app.route('/messages/:messageId/replies')
+  .post(mesSend.add_reply);
+
   app.route('/messages/author/:authorId')
     .get(mesSend.get_author_messages);
 };

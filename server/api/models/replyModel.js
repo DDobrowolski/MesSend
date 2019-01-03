@@ -2,7 +2,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var MessageSchema = new Schema({
+var ReplySchema = new Schema({
+  messageId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Messages'
+  },
   date: {
     type: Date,
     default: Date.now
@@ -11,10 +15,6 @@ var MessageSchema = new Schema({
     type: String,
     required: 'Message cannot be empty'
   },
-  replies: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Replies'
-  }],
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Users',
@@ -22,4 +22,4 @@ var MessageSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Messages', MessageSchema);
+module.exports = mongoose.model('Replies', ReplySchema);
