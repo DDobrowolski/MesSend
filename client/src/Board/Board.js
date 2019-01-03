@@ -44,7 +44,6 @@ class Board extends Component {
         const messages = res.data;
         this.setState({messages: messages});
       });
-    console.log(this.state)
   }
     render() {
       return ([new NavBar(),mainContent(this.state.messages)]);

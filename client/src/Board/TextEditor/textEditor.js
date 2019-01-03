@@ -5,7 +5,7 @@ import './textEditor.scss';
 
 const textEditor = () => (
 <form><div className="form-group" id="postEditor">
-<input className="form-control" rows="3"></input>
+<input className="form-control" rows="3" placeholder="Write something..."></input>
 </div></form>)
 
 export default textEditor;
