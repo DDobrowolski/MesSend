@@ -13,11 +13,6 @@ const content = (messages) => {
   </div>)
 }
 
-const replies = (message) => {
-  message.replies.map(reply => {
-    return (<div>{reply.content}</div>)
-  })
-}
 
 const items = (messages) => {
   return messages.map(m => {
@@ -36,6 +31,7 @@ const items = (messages) => {
     </div>
     </div>
     </div>
+    <span><Link to="#">{m.replies.length} replies</Link></span>
     </div>
   )})
 }
