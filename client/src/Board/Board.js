@@ -4,7 +4,7 @@ import NavBar from '../NavBar/Navbar';
 import './Board.scss';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
-import textEditor from './TextEditor/textEditor';
+import TextEditor from './TextEditor/TextEditor.js';
 
 const content = (messages) => {
   return (
@@ -13,7 +13,7 @@ const content = (messages) => {
   </div>)
 }
 
-
+// TODO link to replies
 const items = (messages) => {
   return messages.map(m => {
     const userId = m.author._id;
@@ -36,7 +36,7 @@ const items = (messages) => {
   )})
 }
 
-const mainContent = (messages) => (<div className="mainContainer">{[textEditor(), content(messages)]}</div>)
+const mainContent = (messages) => (<div className="mainContainer"><TextEditor/>{content(messages)}</div>)
 
 class Board extends Component {
   state = {messages: []}
