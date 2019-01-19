@@ -3,22 +3,25 @@ import axios from 'axios';
 import {item} from '../Board';
 
 
+const content = (message) => {
+    return (
+  <div className="container">
+        {item(message, false)}
+    </div>)
+  }
+
+
 class Replies extends Component {
 
-    content = (message) => {
-        return (
-      <div className="container">
-            {item(message)}
-        </div>)
-      }
-    
 constructor(props){
     super(props);
     this.state = {message: {}}
+    console.log('test')
 }
 
 componentDidMount() {
     const messageId = this.props.match.params.messageId;
+    console.log(messageId)
     axios.get(`http://localhost:8080/messages/${messageId}`).then(res => {
         const message = res.data;
         this.setState({message});
@@ -27,7 +30,9 @@ componentDidMount() {
   }
 
 render(){
-    return this.content(this.state.message);
+    if(this.state.message.author)
+    return content(this.state.message);
+    else return <div></div>
 }
 
 
