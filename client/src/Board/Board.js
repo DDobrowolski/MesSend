@@ -6,7 +6,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom'
 import TextEditor from './TextEditor/TextEditor.js';
 
-const content = (messages) => {
+export const content = (messages) => {
   return (
 <div className="container">
       {items(messages)}

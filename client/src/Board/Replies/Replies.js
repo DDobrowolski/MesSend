@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import {item} from '../Board';
 import axios from 'axios';
+import {item} from '../Board';
 
-
-const content = (message) => {
-    return (
-  <div className="container">
-        {item(message)}
-    </div>)
-  }
 
 class Replies extends Component {
+
+    content = (message) => {
+        return (
+      <div className="container">
+            {item(message)}
+        </div>)
+      }
     
 constructor(props){
     super(props);
@@ -19,15 +19,15 @@ constructor(props){
 
 componentDidMount() {
     const messageId = this.props.match.params.messageId;
-    axios.get(`http://localhost:8080/messages/${this.props.messageId}`).then(res => {
+    axios.get(`http://localhost:8080/messages/${messageId}`).then(res => {
         const message = res.data;
         this.setState({message});
+        console.log(this.state.message)
       });
   }
 
 render(){
-    //return content(this.state.message);
-    return <div></div>
+    return this.content(this.state.message);
 }
 
 
