@@ -13,12 +13,10 @@ const content = (messages) => {
   </div>)
 }
 
-// TODO link to replies
-const items = (messages) => {
-  return messages.map(m => {
-    const userId = m.author._id;
-    const imageSrc = `http://localhost:8080/${m.author.image}`;
-    const username = m.author.username;
+export const item = message => {
+    const userId = message.author._id;
+    const imageSrc = `http://localhost:8080/${message.author.image}`;
+    const username = message.author.username;
     return (
     <div className="post">
     <div className="row">
@@ -27,13 +25,17 @@ const items = (messages) => {
     <Link to={`profile/${userId}`}><img src={imageSrc} alt={username}></img></Link>
     </div>
     <div className="postContent">
-    {m.content} - <Link to={`profile/${userId}`}>{m.author.username}</Link>
+    {message.content} - <Link to={`profile/${userId}`}>{message.author.username}</Link>
     </div>
     </div>
     </div>
-    <span><Link to="#">{m.replies.length} replies</Link></span>
+    <span><Link to={`posts/${message._id}/replies`}>{message.replies.length} replies</Link></span>
     </div>
-  )})
+  )}
+
+// TODO link to replies
+const items = (messages) => {
+  return messages.map((m => item(m)))
 }
 
 const mainContent = (messages) => (<div className="mainContainer"><TextEditor/>{content(messages)}</div>)
@@ -43,7 +45,7 @@ class Board extends Component {
   componentDidMount() {
     axios.get('http://localhost:8080/messages').then(res => {
         const messages = res.data;
-        this.setState({messages: messages});
+        this.setState({messages});
       });
   }
     render() {
