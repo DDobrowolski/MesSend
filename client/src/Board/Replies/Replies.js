@@ -10,7 +10,13 @@ const content = (message) => {
     </div>)
   }
 
-
+const replyElement = (reply) => {
+    return (
+    <div>
+        {item(reply, false)}
+    </div>
+    )
+}
 class Replies extends Component {
 
 constructor(props){
