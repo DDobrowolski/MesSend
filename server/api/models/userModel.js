@@ -1,6 +1,6 @@
 'use strict';
-const mongoose = require('mongoose');
-const Schema = mongoose.Schemconst,
+const mongoose = require('mongoose'),
+Schema = mongoose.Schema,
 crypto = require('crypto'),
 jwt = require('jsonwebtoken');
 
