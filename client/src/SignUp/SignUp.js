@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import NavBar from '../NavBar/Navbar';
 import './SignUp.scss';
-import axios from 'axios';
 
 
 

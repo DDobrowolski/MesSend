@@ -1,14 +1,20 @@
+
+
 .mainContainer{
     text-align: center;
 }
+
 .container {
     margin-top: 2rem;
     text-align: center;
     height: 100%;
 }
+
 .post {
-border-style: groove;
+    margin-top: 5px;
+background-color: rgb(251, 251, 251);
 }
+
 
 .profileImg{
     float: left;
@@ -16,6 +22,7 @@ border-style: groove;
     height: inherit;
     width: 20%;
 }
+
 .profileImg img{
     max-width:100%;
     max-height:100%;
@@ -28,4 +35,16 @@ border-style: groove;
 .col {
     height: inherit !important;
     box-sizing: content-box;
+}
+
+.postContentContainer{
+    height: 100%;
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center;
+}
+
+.postContent {
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
 }

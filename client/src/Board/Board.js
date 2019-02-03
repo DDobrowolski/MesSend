@@ -24,8 +24,10 @@ export const item = (message, replies) => {
           <div className ="profileImg">
           <Link to={`profile/${userId}`}><img src={imageSrc} alt={username}></img></Link>
           </div>
+          <div className="postContentContainer">
           <div className="postContent">
           {message.content} - <Link to={`profile/${userId}`}>{message.author.username}</Link>
+          </div>
           </div>
         </div>
       </div>
