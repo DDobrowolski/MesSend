@@ -1,14 +1,12 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './HomePage.scss';
-import {Link} from 'react-router-dom'
+import NavBar from '../NavBar/Navbar';
+import './SignUp.scss';
+import axios from 'axios';
 
-export default class HomePage extends Component {
-  remember = false;
-  actualUser = 'Test user';
-  logIn() {
-    alert('Elo')
-  }
+
+
+class SignUp extends Component {
   loginForms = (
     <form onSubmit={this.logIn}>
     <div class="form-group">
@@ -20,31 +18,28 @@ export default class HomePage extends Component {
       <label for="password">Password</label>
       <input type="password" class="form-control" id="password" placeholder="Password"/>
     </div>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" />
-      <label className="remember-me" for="rememberMe">Remember me</label>
+    <div className="form-group">
+      <label for="password">Repeat password</label>
+      <input type="password" class="form-control" id="password" placeholder="Password"/>
     </div>
-    <div class="signUpLabel">
-    <label>Don't have acc? <Link to={`signup`}>Sign up! </Link></label>
-    </div>
-    <button type="submit" class="btn btn-primary">Sign in!</button>
+    <button type="submit" class="btn btn-primary">Sign up!</button>
   </form>
   )
-
   loginCard = (
     <div className="card text-center" style = {{width: "18rem"}}>
     <div className="card-header">
     {!this.remember && 'Welcome!'} {this.remember && `Welcome back ${this.actualUser}`}
     </div>
     <div className="card-body">
-    <h5 className="card-title">Please log in:</h5>
+    <h5 className="card-title">Sign up:</h5>
     {this.loginForms}
   </div>
     </div>
   )
   content = (<div className="container" >{this.loginCard}</div>)
-
-  render() {
-    return this.content;
+    render() {
+      return (this.content);
+    }
   }
-}
+  export default SignUp;
+  
