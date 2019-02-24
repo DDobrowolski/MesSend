@@ -14,6 +14,8 @@ exports.get_all_users = function (req, res) {
 
 exports.create_user = function (req, res) {
   const new_user = new User(req.body);
+  new_user.setPassword(req.body.password);
+
   new_user.save(function (err, user) {
     if (err)
       res.send(err);

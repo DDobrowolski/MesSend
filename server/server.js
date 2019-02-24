@@ -7,6 +7,8 @@ const express = require('express'),
     Reply = require('./api/models/replyModel') //created model loading here
 bodyParser = require('body-parser'),
     cors = require('cors');
+    require('./api/config/passport');
+
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;

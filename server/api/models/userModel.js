@@ -5,17 +5,15 @@ crypto = require('crypto'),
 jwt = require('jsonwebtoken');
 
 let UserSchema = new Schema({
-  username: {
+  email: {
     type: String,
-    required: 'Username is required'
+    required: 'Email is required'
   },
   passwordHash: {
     type: String,
-    required: 'Password is required'
   },
   passwordSalt: {
     type: String,
-    required: 'Password is required'
   },
   messages: {
     type: mongoose.Schema.Types.ObjectId,
@@ -26,12 +24,12 @@ let UserSchema = new Schema({
   }
 });
 
-UserSchema.methods.setPassword = (password) => {
+UserSchema.methods.setPassword = function(password) {
   this.passwordSalt = crypto.randomBytes(16).toString('hex');
   this.passwordHash = crypto.pbkdf2Sync(password, this.passwordSalt, 1000, 512, 'sha512').toString('hex');
 };
 
-UserSchema.methods.validatePassword = (password) => {
+UserSchema.methods.validatePassword = function(password) {
   const hash = crypto.pbkdf2Sync(password, this.passwordSalt, 1000, 512, 'sha512').toString('hex');
   return this.hash === hash;
 };
@@ -42,7 +40,7 @@ UserSchema.methods.generateJWT = () => {
   expirationDate.setDate(today.getDate() + 60);
 
   return jwt.sign({
-    username: this.username,
+    email: this.email,
     id: this._id,
     token: this.generateJWT(),
   }, 'secret');
@@ -50,7 +48,7 @@ UserSchema.methods.generateJWT = () => {
 
 UserSchema.methods.toAuthJSON = () => ({
   _id: this._id,
-  username: this.username,
+  email: this.email,
   token: this.generateJWT(),
 });
 
