@@ -15,7 +15,7 @@ export const content = (messages) => {
 
 export const item = (message, replies) => {
     const userId = message.author._id;
-    const imageSrc = `http://localhost:8080/${message.author.image}`;
+    const imageSrc = process.env.BACKEND_DOMAIN+message.author.image;
     const username = message.author.username;
     return (
     <div className="post" key={message._id}>
@@ -49,7 +49,7 @@ class Board extends Component {
 
   }
   componentDidMount() {
-    axios.get('http://localhost:8080/messages').then(res => {
+    axios.get(process.env.BACKEND_DOMAIN+'messages').then(res => {
         const messages = res.data;
         this.setState({messages});
       });
