@@ -7,7 +7,7 @@ export default class HomePage extends Component {
   remember = false;
   actualUser = 'Test user';
   logIn() {
-    alert('Elo')
+    alert('test');
   }
   loginForms = (
     <form onSubmit={this.logIn}>
