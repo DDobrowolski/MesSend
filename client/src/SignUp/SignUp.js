@@ -9,8 +9,11 @@ export default class SignUp extends Component {
     this.state = { email: '', password: '', passwordConfirm: '' };
   }
   signUp = async () => {
-    console.log(this.state)
-    await axios.post(process.env.REACT_APP_API_URL + 'users', { ...this.state });
+    await axios.post(
+      process.env.REACT_APP_API_URL + 'users',
+      { ...this.state },
+      { headers: {'Content-Type': 'application/json'} }
+    );
   };
   handleEmailChange = event => {
     this.setState({ email: event.target.value });
