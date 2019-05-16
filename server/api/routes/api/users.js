@@ -2,25 +2,25 @@
 const router = require('express').Router();
 const auth = require('../auth');
 
-const user_controller = require('../../controllers/userController');
+const users_controller = require('../../controllers/users_controller');
 
 router.route('/')
-  .get(user_controller.get_all_users)
-  .post(user_controller.create_user);
+  .get(users_controller.get_all_users)
+  .post(users_controller.create_user);
 
 
 router.route('/:userId')
-  .get(user_controller.get_one_user)
-  .put(user_controller.update_user)
-  .delete(user_controller.delete_user);
+  .get(users_controller.get_one_user)
+  .put(users_controller.update_user)
+  .delete(users_controller.delete_user);
 
 router.route('/:userId/messages')
-  .get(user_controller.get_user_messages);
+  .get(users_controller.get_user_messages);
 
 router.route('/sign_in')
-  .post(auth.optional, user_controller.sign_in(req, res, next));
+  .post(auth.optional, users_controller.sign_in);
 
 router.route('/current')
-  .get(auth.required, user_controller.get_current(req, res, next));
+  .get(auth.required, users_controller.get_current);
 
 module.exports = router;
