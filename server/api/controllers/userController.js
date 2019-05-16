@@ -19,6 +19,7 @@ exports.create_user = function (req, res) {
   new_user.save(function (err, user) {
     if (err)
       res.send(err);
+    console.log(`Created user ${user}`)
     res.json(user);
   });
 };
@@ -49,6 +50,7 @@ exports.delete_user = function (req, res) {
   }, function (err, user) {
     if (err)
       res.send(err);
+    console.log(`Deleted user ${user}`)
     res.json({
       user: 'User successfully deleted'
     });
