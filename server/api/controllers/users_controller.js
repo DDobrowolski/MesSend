@@ -101,13 +101,13 @@ exports.sign_in = (req, res, next) => {
       if (passportUser) {
         const user = passportUser;
         user.token = passportUser.generateJWT();
-
+        console.log(`User ${passportUser.id} signed in.`)
         return res.json({
           user: user.toAuthJSON()
         });
       }
 
-      return status(400).info;
+      return res.status(400).json({'error': 'An error has occured.'});
     }
   )(req, res, next);
 };

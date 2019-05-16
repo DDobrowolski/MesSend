@@ -31,10 +31,10 @@ UserSchema.methods.setPassword = function(password) {
 
 UserSchema.methods.validatePassword = function(password) {
   const hash = crypto.pbkdf2Sync(password, this.passwordSalt, 1000, 512, 'sha512').toString('hex');
-  return this.hash === hash;
+  return this.passwordHash === hash;
 };
 
-UserSchema.methods.generateJWT = () => {
+UserSchema.methods.generateJWT = function() {
   const today = new Date();
   const expirationDate = new Date(today);
   expirationDate.setDate(today.getDate() + 60);
@@ -42,14 +42,15 @@ UserSchema.methods.generateJWT = () => {
   return jwt.sign({
     email: this.email,
     id: this._id,
-    token: this.generateJWT(),
+    exp: parseInt(expirationDate.getTime() / 1000, 10),
   }, 'secret');
 };
 
-UserSchema.methods.toAuthJSON = () => ({
-  _id: this._id,
+UserSchema.methods.toAuthJSON = function() {
+  return {_id: this._id,
   email: this.email,
   token: this.generateJWT(),
-});
+  }
+};
 
 module.exports = mongoose.model('Users', UserSchema);
