@@ -12,7 +12,7 @@ export default class SignUp extends Component {
   }
   signUp = async () => {
     await axios.post(
-      process.env.REACT_APP_API_URL + 'users',
+      process.env.REACT_APP_API_URL + 'api/users',
       { ...this.state },
       { headers: {'Content-Type': 'application/json'} }
     );
