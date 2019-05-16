@@ -25,7 +25,7 @@ export default class HomePage extends Component {
       <label className="remember-me" for="rememberMe">Remember me</label>
     </div>
     <div class="signUpLabel">
-    <label>Don't have acc? <Link to={`signup`}>Sign up! </Link></label>
+    <label>Don't have an account? <Link to={`signup`}>Sign up! </Link></label>
     </div>
     <button type="submit" class="btn btn-primary">Sign in!</button>
   </form>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './SignUp.scss';
 import axios from 'axios';
+import {Link} from 'react-router-dom'
+
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -65,6 +67,9 @@ export default class SignUp extends Component {
                   value={this.state.confirmPassword}
                   onChange={this.handlePasswordConfirmationChange}
                 />
+              </div>
+              <div class="signUpLabel">
+                <label>Have an account? <Link to={`/`}>Sign in! </Link></label>
               </div>
               <button type="submit" className="btn btn-primary">
                 Sign up!
