@@ -20,7 +20,6 @@ const corsOptions = {
     origin: 'http://localhost:3000',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
-
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -28,10 +27,7 @@ app.use(bodyParser.json());
 app.use(cors(corsOptions));
 app.use(express.static('static'))
 
-var routes = require('./api/routes/messageRoutes'); //importing route
-routes(app); //register the route
-var routes2 = require('./api/routes/userRoutes');
-routes2(app);
+app.use(require('./api/routes'));
 
 app.listen(port);
 
