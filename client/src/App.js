@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.scss';
-import HomePage from './HomePage/HomePage';
+import Login from './Login/Login';
 
 
 class App extends Component {
   render() {
-    return (<HomePage ></HomePage>);
+    return (<Login ></Login>);
   }
 }
 export default App;
